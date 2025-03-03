@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.github.fmatt</groupId>
+	<artifactId>formbuilder</artifactId>
+	<version>0.0.1</version>
+	<packaging>war</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+
+		<version.jakartaee>10.0.0</version.jakartaee>
+
+		<version.war.plugin>3.2.2</version.war.plugin>
+		<version.liberty.plugin>3.11.2</version.liberty.plugin>
+
+		<version.primefaces>15.0.0</version.primefaces>
+		<version.omnifaces>4.6.1</version.omnifaces>
+	</properties>
+
+	<dependencies>
+		<dependency>
+		    <groupId>jakarta.platform</groupId>
+		    <artifactId>jakarta.jakartaee-api</artifactId>
+		    <version>${version.jakartaee}</version>
+		    <scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>${version.primefaces}</version>
+			<classifier>jakarta</classifier>
+		</dependency>
+
+
+		<dependency>
+		    <groupId>org.omnifaces</groupId>
+		    <artifactId>omnifaces</artifactId>
+		    <version>${version.omnifaces}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>formbuilder</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${version.war.plugin}</version>
+			</plugin>
+
+			<plugin>
+    				<groupId>io.openliberty.tools</groupId>
+    				<artifactId>liberty-maven-plugin</artifactId>
+				<version>${version.liberty.plugin}</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>
