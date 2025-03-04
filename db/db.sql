@@ -30,6 +30,7 @@ CREATE TABLE questions (
 CREATE TABLE answer_choices (
     id SERIAL,
     text TEXT,
+    answer_choice_order INTEGER,
     question_id INTEGER NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (question_id) REFERENCES questions (id)

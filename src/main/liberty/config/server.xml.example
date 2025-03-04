@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<server description="formbuilder">
+    <featureManager>
+        <feature>webProfile-10.0</feature>
+        <feature>xmlBinding-4.0</feature>
+    </featureManager>
+
+    <variable name="http.port" defaultValue="9080" />
+    <variable name="https.port" defaultValue="9443" />
+
+    <httpEndpoint host="*" httpPort="${http.port}" httpsPort="${https.port}" id="defaultHttpEndpoint" />
+
+    <library id="postgresqlJdbc">
+        <fileset dir="jdbc" includes="*.jar" />
+    </library>
+
+    <jdbcDriver id="postgresqlDriver" libraryRef="postgresqlJdbc"/>
+    <dataSource id="formbuilderDS" jndiName="formbuilderDS" jdbcDriverRef="postgresqlDriver">
+        <properties serverName="localhost" portNumber="5432" databaseName="formbuilder" user="<user>"
+                    password="<password>"/>
+    </dataSource>
+
+    <webApplication id="formbuilder" location="formbuilder.war" name="formbuilder" />
+</server>

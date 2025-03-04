@@ -51,14 +51,34 @@
 		<finalName>formbuilder</finalName>
 		<plugins>
 			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.11.0</version>
+				<configuration>
+					<release>17</release>
+				</configuration>
+			</plugin>
+
+			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${version.war.plugin}</version>
 			</plugin>
 
 			<plugin>
-    				<groupId>io.openliberty.tools</groupId>
-    				<artifactId>liberty-maven-plugin</artifactId>
+				<groupId>io.openliberty.tools</groupId>
+				<artifactId>liberty-maven-plugin</artifactId>
 				<version>${version.liberty.plugin}</version>
+				<configuration>
+					<copyDependencies>
+						<dependencyGroup>
+							<location>jdbc</location>
+							<dependency>
+								<groupId>org.postgresql</groupId>
+								<artifactId>postgresql</artifactId>
+								<version>42.7.4</version>
+							</dependency>
+						</dependencyGroup>
+					</copyDependencies>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
